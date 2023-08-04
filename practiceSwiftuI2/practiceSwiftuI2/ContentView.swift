@@ -19,8 +19,52 @@ struct ContentView: View {
     }
 }
 
+struct rectangle : View {
+    let colors: [Color] =
+        [.red, .orange, .yellow, .green, .blue, .purple]
+
+
+    var body: some View {
+        ZStack {
+            ForEach(0..<colors.count) {
+                Rectangle()
+                    .fill(colors[$0])
+                    .frame(width: 100, height: 100)
+                    .offset(x: CGFloat($0) * 10.0,
+                            y: CGFloat($0) * 10.0)
+            }
+        }
+    }
+}
+
+struct ProfileView: View {
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Image("ProfilePicture")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Rachael Chiseck")
+                        .font(.headline)
+                    Text("Chief Executive Officer")
+                        .font(.subheadline)
+                }
+                Spacer()
+            }
+            .padding()
+            .foregroundColor(.primary)
+            .background(Color.primary
+                            .colorInvert()
+                            .opacity(0.75))
+        }
+    }
+}
+
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        rectangle()
     }
 }
