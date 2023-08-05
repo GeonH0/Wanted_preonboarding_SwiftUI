@@ -61,10 +61,38 @@ struct ProfileView: View {
     }
 }
 
+struct Hstack : View {
+    var body: some View {
+        HStack(
+            alignment: .top,
+            spacing: 10
+        ) {
+            ForEach(
+                1...5,
+                id: \.self
+            ) {
+                Text("Item \($0)")
+            }
+        }
+    }
+}
+
+struct lazyHstack : View {
+    var body : some View {
+        ScrollView(.horizontal) {
+            LazyHStack(alignment: .top, spacing: 10) {
+                ForEach(1...100, id: \.self) {
+                    Text("Column \($0)")
+                }
+            }
+        }
+    }
+}
+
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        rectangle()
+        lazyHstack()
     }
 }
