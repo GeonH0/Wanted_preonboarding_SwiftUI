@@ -93,6 +93,6 @@ struct lazyHstack : View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        lazyHstack()
+        rectangle()
     }
 }
